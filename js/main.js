@@ -4,11 +4,17 @@ let guess = "";
 
 const correctPasswoords = "wachtwoord"; 
 
+let gueses = [];
+
 passwoordButton.addEventListener('click', function() {
     while (guess !== correctPasswoords) {
         guess = prompt("Wat is je wachtwoord!");
         
-        myList.innerHTML += `<li>${guess}</li>`;
+        let isCorrect = guess === correctPasswoords;
+        
+        gueses.push({ guess: guess, isCorrect: isCorrect });
+        
+        myList.innerHTML += `<li>${guess} - ${isCorrect ? 'true' : 'false'}</li>`;
         
         if (guess === correctPasswoords) {
             alert("Welkom!");
@@ -17,5 +23,6 @@ passwoordButton.addEventListener('click', function() {
         }
     }
 });
+
 
 
